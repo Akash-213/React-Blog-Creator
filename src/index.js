@@ -3,6 +3,32 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import axios from 'axios';
+
+// axios.defaults.baseURL = 'http://jsonplaceholder.typicode.com';
+// axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
+// axios.defaults.headers.post['Content-Type']='application/json';
+
+axios.interceptors.request.use(request => {
+  console.log(request);
+
+  // retuen else blocking all axios requests
+  return request;
+}, error => {
+  console.error()
+  return Promise.reject(error);
+});
+
+axios.interceptors.request.use(response => {
+  console.log(response);
+
+  // return else blocking all axios requests
+  return response;
+}, error => {
+  console.error()
+  return Promise.reject(error);
+});
+
 
 ReactDOM.render(
   <React.StrictMode>
